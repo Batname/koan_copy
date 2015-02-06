@@ -15,6 +15,7 @@ var co = require('co'),
 var config = require('./config/config'),
 		mongoCommon = require('./models/common'),
 		mongoSeed = require('./models/seed/mongo-seed'),
+    ws = require('./config/ws'),
 		koaConfig = require('./config/koa');
 
 module.exports = app;		
@@ -33,6 +34,7 @@ app.init = co.wrap(function *(overwriteDB) {
 
   // create http servers and start listening for requests
   app.server = app.listen(config.app.port);
+  ws.listen(app.server);
   if (config.app.env !== 'test') {
     console.log('KOAN listening on port ' + config.app.port);
   }

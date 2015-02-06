@@ -23,11 +23,11 @@ module.exports = function (app) {
   }));
 
   // register special controllers which should come before any jwt token check and be publicly accessible
-  // require('../controllers/public').init(app);
-  // require('../controllers/signin').init(app);
+  require('../controllers/public').init(app);
+  require('../controllers/signin').init(app);
 
   // serve the static files in the /client directory, use caching only in production (7 days)
-  var sendOpts = config.app.env === 'production' ? {root: 'client', maxage: config.app.cacheTime} : {root: 'client'};
+  var sendOpts = config.app.env === 'production' ? {root: 'public', maxage: config.app.cacheTime} : {root: 'public'};
   app.use(function *(next) {
     // do not handle /api paths
     if (this.path.substr(0, 5).toLowerCase() === '/api/') {
@@ -50,7 +50,7 @@ module.exports = function (app) {
   app.use(jwt({secret: config.app.secret}));
 
   // mount all the routes defined in the api controllers
-  // fs.readdirSync('./server/controllers').forEach(function (file) {
-  //   require('../controllers/' + file).init(app);
-  // });
+  fs.readdirSync('./app/controllers').forEach(function (file) {
+    require('../controllers/' + file).init(app);
+  });
 };

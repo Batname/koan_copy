@@ -98,7 +98,8 @@
           throw "Undefined event type received through WebSocket. Received event data object was: " + data;
         }
       }
-      return data.method.split(".").reduce(index, api).publish(data.params);
+      data.method.split(".").reduce(index, api).publish(data.params);
+      return $rootScope.$apply();
     };
     return api;
   });

@@ -85,5 +85,8 @@ angular.module("koan.common").factory "api", ($rootScope, $http, $window) ->
       throw "Malformed event data received through WebSocket. Received event data object was: " + data
     else throw "Undefined event type received through WebSocket. Received event data object was: " + data  unless data.method.split(".").reduce(index, api)
     data.method.split(".").reduce(index, api).publish data.params
+    $rootScope.$apply()
 
   api
+
+

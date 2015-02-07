@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Welcome to KOAN - Sign In, Sign Up or Learn More</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css"><link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css"><link rel="stylesheet" href="/bower_components/bootstrap-social/bootstrap-social.css"><style type="text/css">body {
+background-color: #f8f8f8;
+}
+/* Left-side bullets and large logo */
+.logo-align {
+margin-top: 5%;
+margin-bottom: 10%;
+margin-left: 5%;
+max-width: 75%;
+}
+.logo-align .logo-info {
+margin-bottom: 40px;
+margin-left: 5px;
+margin-top: 25px;
+font-size: 18px;
+line-height: 20px;
+}
+.logo-align .media {
+margin-top: 35px;
+}
+.logo-align .media img {
+margin-right: 10px;
+}
+/* Signin layout */
+.social-signin {
+margin-left: 20%;
+padding-bottom: 15px;
+}
+.social-signin a {
+margin-top: 10px;
+}</style></head><body><div class="navbar navbar-default navbar-static-top"><div class="container visible-xs"><div class="navbar-header"><a href="/" class="navbar-brand"><img src="/images/koan.png" width="97" height="30" alt="KOAN" class="brand-image"></a></div></div><div class="container"><ul class="nav navbar-nav navbar-right"><a type="button" href="https://github.com/soygul/koan" class="btn btn-success navbar-btn"><strong>View on GitHub</strong></a></ul></div></div><div class="container"><div class="row"><div class="col-sm-6"><div class="logo-align hidden-xs"><a href="/"><img src="/images/koan.png" alt="KOAN"></a><h1 class="logo-info">KOAN (Koa, Angular, Node): Full stack JavaScript Web development boilerplate.</h1><div class="media"><div class="pull-left"><img src="/images/koa.png" alt="Koa" class="media-object"></div><div class="media-body">Koa framework provides the RESTful backend API, utilizing the harmony generators.</div></div><div class="media"><div class="pull-left"><img src="/images/angularjs.png" alt="AngularJS" class="media-object"></div><div class="media-body">AngularJS is our fully static client side app framework, and it is heroic!</div></div><div class="media"><div class="pull-left"><img src="/images/nodejs.png" alt="Node.js" class="media-object"></div><div style="padding-top: 10px;" class="media-body">Node.js is super glue, runtime for the backend, built system for the front.</div></div><div class="media"><div class="pull-left"><img src="images/mongodb.png" alt="MongoDB" class="media-object"></div><div class="media-body">Finally, MongoDB is our NoSQL database of choice in this stack and sample app.</div></div></div></div><div class="col-sm-6"><h2>Sign In</h2><p>Welcome to <strong>KOAN sample app</strong>. Please enter your account info. <br>        You can also sign in with your Facebook or Google account.</p><form action="/signin" method="post" style="width: 50%"><p class="social-signin"><a href="/signin/facebook" class="btn btn-sm btn-social btn-facebook"><span class="fa fa-facebook"></span><strong>Sign in with Facebook</strong></a><a href="/signin/google" class="btn btn-sm btn-social btn-google-plus"><span class="fa fa-google-plus"></span><strong>Sign in with Google</strong></a></p><div class="form-group"><label for="email">Email address</label><input id="email" type="email" name="email" placeholder="Enter email" value="chuck@koan.herokuapp.com" class="form-control"></div><div class="form-group"><label for="password">Password</label><input id="password" type="password" name="password" placeholder="Password" value="pass" class="form-control"></div><div class="checkbox"><label><input id="rememberme" type="checkbox" checked=""> Remember me</label></div><p style="color: darkred; font-weight: bold;" class="help-block"></p><button type="submit" class="btn btn-default">Sign In</button></form><br><h2>Sign Up</h2><p>You can easily sign up using your Facebook or Google account using the sign in buttons above.</p></div></div><hr><footer><p>KOAN © Teoman Soygul (MIT License)
+· <a href="https://github.com/soygul/koan">GitHub Repo</a></p></footer></div><script src="/bower_components/jquery/dist/jquery.js"></script><script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script><script src="/javascripts/common/signin.js"></script></body></html>

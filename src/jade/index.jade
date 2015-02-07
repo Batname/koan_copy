@@ -1,1 +1,106 @@
-div hello
+doctype html
+html(ng-app='koan')
+  head
+    base(href='/')
+    meta(charset='utf-8')
+    meta(name='description', content='KOAN Stack (Koa, Angular, Node.js) - A real-time full-stack JavaScript Web development framework.')
+    script(src='/javascripts/common/home.js')
+
+    title(ng-bind='common.title') KOAN
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='/bower_components/angular-loading-bar/build/loading-bar.css')
+    link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.css')
+    link(rel='stylesheet', href='/bower_components/font-awesome/css/font-awesome.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    .navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(style='margin-right: 25px;', href='/')
+            img.brand-image(src='/images/koan.png', width='97', height='30', alt='KOAN')
+        .navbar-collapse.collapse
+          ul.nav.navbar-nav
+            li.dropdown
+              a.dropdown-toggle(href='#', data-toggle='dropdown')
+                span.glyphicon.glyphicon-flag
+                |             Notifications
+                span.badge(ng-bind='common.user.notifications.length')
+                b.caret
+              ul.dropdown-menu
+                li(ng-repeat='notification in common.user.notifications')
+                  a(ng-href='/notifications/{{notification.id}}') {{notification.title}}
+                  |  {{notification.message}}
+                li.dropdown-header(ng-if='!common.user.notifications') No new notifications
+            li.dropdown
+              a.dropdown-toggle(href='#', data-toggle='dropdown')
+                span.glyphicon.glyphicon-envelope
+                |             Messages
+                span.badge(ng-bind='common.user.messages.length')
+                b.caret
+              ul.dropdown-menu
+                li(ng-repeat='message in common.user.messages')
+                  a(ng-href='/messages/{{message.id}}') {{message.title}}
+                  |  {{message.message}}
+                li.dropdown-header(ng-if='!common.user.messages') No unread messages
+                li.divider
+                li
+                  a(href='#')
+                    span.glyphicon.glyphicon-envelope
+                    |  Message Archive
+          form.navbar-form.navbar-left.hidden-xs.hidden-sm(ng-submit='common.search()')
+            .form-group
+              input.form-control(name='q', type='text', ng-model='common.searchQuery', placeholder='Search')
+            button.btn.btn-default(type='submit')
+              span.glyphicon.glyphicon-search
+          ul.nav.navbar-nav.navbar-right
+            li.dropdown
+              a.dropdown-toggle(href='#', data-toggle='dropdown')
+                img(ng-src='{{common.user.picture}}', alt='')
+                span.online-indicator(ng-style='common.onlineIndicatorStyle')
+                span(ng-bind='common.user.name')
+                b.caret
+              ul.dropdown-menu
+                li
+                  a(href='', ng-click='common.logout()') Logout
+    .container
+      .row
+        .col-md-2
+          ul.nav.nav-pills.nav-stacked.sidenav
+            li(ng-class='common.active.home')
+              a(href='/')
+                span.glyphicon.glyphicon-home
+                |  Home
+            li(ng-class='common.active.profile')
+              a(href='/profile')
+                span.glyphicon.glyphicon-user
+                |  Profile
+        .col-md-7(ng-view='')
+        .col-md-3
+      hr
+      footer
+        p
+          | KOAN © Teoman Soygul (MIT License) ·
+          a.btn.btn-primary(type='button', href='https://github.com/soygul/koan')
+            strong View on GitHub
+          button.btn.btn-xs.btn-warning.pull-right(type='button', ng-click='common.clearDatabase()')
+            strong Clear Database
+    script(src='/bower_components/jquery/dist/jquery.js')
+    script(src='/bower_components/lodash/lodash.js')
+    script(src='/bower_components/angular/angular.js')
+    script(src='/bower_components/angular-animate/angular-animate.js')
+    script(src='/bower_components/angular-route/angular-route.js')
+    script(src='/bower_components/angular-elastic/elastic.js')
+    script(src='/bower_components/angular-loading-bar/build/loading-bar.js')
+    script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+    script(src='/javascripts/app.js')
+    script(src='/javascripts/modules/common/common.js')
+    script(src='/javascripts/modules/common/api-service.js')
+    script(src='/javascripts/modules/home/home.js')
+    script(src='/javascripts/modules/home/home-controller.js')
+    script(src='/javascripts/modules/profile/profile.js')
+    script(src='/javascripts/modules/profile/profile-controller.js')

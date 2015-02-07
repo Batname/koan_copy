@@ -69,10 +69,17 @@ module.exports = function (grunt) {
         },
         coffee : {
             compile: {
-                files: {
-                    'public/javascripts/app.js': paths.coffee
+                files: [{
+                    expand: true,
+                    cwd: "src/coffee",
+                    src: ["**/*.coffee"],
+                    dest: "public/javascripts",
+                    ext: ".js"
+                }],
+                options: {
+                    livereload: true
                 }
-            }
+            }            
         },
         nodemon: {
             dev: {
